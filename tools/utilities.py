@@ -28,17 +28,17 @@ class LogHandler(object):
 
     def log_message(self, arg_message: str) -> None:
         t_timestamp = datetime.datetime.now()
-        t_contents = F'{t_timestamp:self._time_format}: {arg_message}'
+        t_contents = F'{t_timestamp:{self._time_format}}: {arg_message}'
         self._write_log_to_file(t_contents)
 
     def log_warning(self, arg_message: str) -> None:
         t_timestamp = datetime.datetime.now()
-        t_contents = F'{t_timestamp:self._time_format}: **WARNING** {arg_message}'
+        t_contents = F'{t_timestamp:{self._time_format}}: **WARNING** {arg_message}'
         self._write_log_to_file(t_contents)
 
     def log_error(self, arg_message: str) -> None:
         t_timestamp = datetime.datetime.now()
-        t_contents = F'{t_timestamp:self._time_format}: {"*" * 10}ERROR{"*" * 10}\n\t{arg_message}'
+        t_contents = F'{t_timestamp:{self._time_format}}: {"*" * 10}ERROR{"*" * 10}\n\t{arg_message}'
         self._write_log_to_file(t_contents)
 
     def _write_log_to_file(self, arg_contents: str) -> bool:

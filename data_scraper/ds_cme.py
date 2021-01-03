@@ -63,6 +63,7 @@ class DataScraperCME(object):
             self._ftp_handle.cwd(t_path_folder)
 
         # Download files with arg_file_name in file name
+        t_total_downloads = 0
         t_listed_items = self._ftp_handle.nlst()
         for t_item_name in t_listed_items:
             if arg_file_name in t_item_name:
@@ -73,5 +74,7 @@ class DataScraperCME(object):
                         self._logger.log_error(F'Download {t_item_name} failed.')
                     else:
                         self._logger.log_message(F'Download is completed: {t_local_full_path}')
+                        t_total_downloads += 1
+        self._logger.log_message(F'Total {t_total_downloads} file(s) are downloaded matching "{arg_file_name}".')
             
             
