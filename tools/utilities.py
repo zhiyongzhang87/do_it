@@ -8,7 +8,7 @@ class LogHandler(object):
     def __init__(self, arg_id: str, arg_log_path: str):
         self._time_format = '%Y-%m-%dT%H:%M:%S.%f'
         self._id = arg_id
-        self._log_dir = arg_log_path
+        self._log_dir = os.path.expanduser(os.path.expandvars(arg_log_path))
         t_timestamp = datetime.datetime.now()
         self._log_full_path = os.path.join(self._log_dir, F'{self._id}_{t_timestamp:%Y%m%d_%H%M%S}.log')
 

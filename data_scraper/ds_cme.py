@@ -10,7 +10,7 @@ class CMEFileCategory(Enum):
 class DataScraperCME(object):
     def __init__(self, arg_logger, arg_data_dir):
         self._logger = arg_logger
-        self._data_dir = arg_data_dir
+        self._data_dir = os.path.expanduser(os.path.expandvars(arg_data_dir))
         self._url = 'ftp.cmegroup.com'
         self._ftp_handle = None
 
